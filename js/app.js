@@ -40,7 +40,7 @@ function renderPosts() {
 fetch("https://jsonplaceholder.typicode.com/posts")
     .then(res => res.json())
     .then(data => {
-        postsArray = data.slice(0, 15)
+        postsArray = data.slice(0, 30)
         renderPosts()
     })
 
