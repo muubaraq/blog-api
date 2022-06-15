@@ -23,9 +23,10 @@ function renderPosts() {
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title">${post.title}</h5>
-                <p class="card-text">${post.body}</p>
+                <p class="card-text">${post.body.slice(0,90)}...</p>
                 <button class="btn btn-primary">Update</button>
                 <a href="detail.html?id=${post.id}" class="btn btn-secondary">View</a>
+                <button class="btn btn-danger btn-block" id="del">Delete</button>
               </div>
             </div>
             
@@ -44,7 +45,7 @@ fetch("https://jsonplaceholder.typicode.com/posts")
         renderPosts()
     })
 
-    // js to add a post
+    // js to add a new post
 
 document.getElementById("new-post").addEventListener("submit", function(e) {
     e.preventDefault()
@@ -70,8 +71,11 @@ document.getElementById("new-post").addEventListener("submit", function(e) {
             renderPosts()
 
             // clear the form
-            // titleInput.value = ""
-            // bodyInput.value = ""
             form.reset()
         })
 })
+
+
+
+
+
