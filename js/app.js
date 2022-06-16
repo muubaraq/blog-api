@@ -24,9 +24,9 @@ function renderPosts() {
               <div class="card-body">
                 <h5 class="card-title">${post.title}</h5>
                 <p class="card-text">${post.body.slice(0,90)}...</p>
-                <button class="btn btn-primary">Update</button>
-                <a href="detail.html?id=${post.id}" class="btn btn-secondary">View</a>
-                <button class="btn btn-danger btn-block" id="del">Delete</button>
+                <button class="btn btn-primary" onclick="updatePost(${post.id})">Update <i class="bi bi-pencil"></i></button>
+                <a href="detail.html?id=${post.id}" class="btn btn-secondary">View <i class="bi bi-binoculars-fill"></i></a>
+                <button class="btn btn-danger btn-block" onclick="deletePost(${post.id})">Delete <i class="bi bi-trash3-fill"></i></button>
               </div>
             </div>
             
@@ -78,4 +78,65 @@ document.getElementById("new-post").addEventListener("submit", function(e) {
 
 
 
+    // js to delete a post
 
+    function deletePost(id) {
+      fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+          method: 'DELETE',
+      })
+          .then((response) => response.json())
+          .then((data) => {
+              console.log(data)
+              postsArray = postsArray.filter(post => post.id !== id)
+              console.log(postsArray)
+              // use a function to display the UI
+              renderPosts()
+          })
+  
+  }
+
+
+  // js to update a post
+
+  function updatePost(id) {
+    console.log(id)
+
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            id: id,
+            title: titleInput.value,
+            body: bodyInput.value,
+            userId: 1,
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+
+            console.log(data)
+            let postTitles = document.querySelectorAll('#post-title')
+            let postBodies = document.querySelectorAll('#post-body')
+            console.log(postTitles)
+            postTitles.forEach((postTitle, index) => {
+                if (index + 1 === id) {
+                    if (data.title !== "") {
+                        postTitle.innerHTML = data.title
+                    }
+                }
+
+            })
+
+            postBodies.forEach((postBody, index) => {
+                if (index + 1 === id) {
+                    if (data.body !== "") {
+                        postBody.innerHTML = data.body
+                    }
+                }
+
+            })
+
+        });
+}

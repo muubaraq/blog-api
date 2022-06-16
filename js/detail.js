@@ -8,8 +8,8 @@ const renderDetails = async () => {
     const post = await res.json();
     
   const  template = `
-    <img src="img/blog-1.jpg" class="img-fluid rounded-start" alt="...">
-    <h1>${post.title}</h1>
+    <img src="img/blog-1.jpg" class="img-fluid rounded-start mb-2" alt="...">
+    <h4>${post.title}</h4>
     <p>${post.body}</p>
     `
     container.innerHTML = template;

@@ -1,9 +1,19 @@
-@media screen and (max-width: 780px) {
+/* @media screen and (max-width: 780px) {
    .non-sticky {
         min-height:  100vh !important;
         margin-bottom: 10em;
         
    }
     
+} */
+
+.body-detail {
+      background-color: grey !important;
+      min-height: 100vh !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      
 }
 
