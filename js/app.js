@@ -89,7 +89,6 @@ document.getElementById("new-post").addEventListener("submit", function(e) {
               console.log(data)
               postsArray = postsArray.filter(post => post.id !== id)
               console.log(postsArray)
-              // use a function to display the UI
               renderPosts()
           })
   
