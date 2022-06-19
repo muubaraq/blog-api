@@ -97,45 +97,47 @@ document.getElementById("new-post").addEventListener("submit", function(e) {
 
   // js to update a post
 
-  function updatePost(id) {
-    console.log(id)
+//   function updatePost(id) {
+//     console.log(id)
 
-    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify({
-            id: id,
-            title: titleInput.value,
-            body: bodyInput.value,
-            userId: 1,
-        }),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-    })
-        .then((response) => response.json())
-        .then((data) => {
+//     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+//         method: 'PUT',
+//         body: JSON.stringify({
+//             id: id,
+//             title: titleInput.value,
+//             body: bodyInput.value,
+//             userId: 1,
+//         }),
+//         headers: {
+//             'Content-type': 'application/json; charset=UTF-8',
+//         },
+//     })
+//         .then((response) => response.json())
+//         .then((data) => {
 
-            console.log(data)
-            let postTitles = document.querySelectorAll('#post-title')
-            let postBodies = document.querySelectorAll('#post-body')
-            console.log(postTitles)
-            postTitles.forEach((postTitle, index) => {
-                if (index + 1 === id) {
-                    if (data.title !== "") {
-                        postTitle.innerHTML = data.title
-                    }
-                }
+//             console.log(data)
+//             let postTitles = document.querySelectorAll('#post-title')
+//             let postBodies = document.querySelectorAll('#post-body')
+//             console.log(postTitles)
+//             postTitles.forEach((postTitle, index) => {
+//                 if (index + 1 === id) {
+//                     if (data.title !== "") {
+//                         postTitle.innerHTML = data.title
+//                     }
+//                 }
 
-            })
+//             })
 
-            postBodies.forEach((postBody, index) => {
-                if (index + 1 === id) {
-                    if (data.body !== "") {
-                        postBody.innerHTML = data.body
-                    }
-                }
+//             postBodies.forEach((postBody, index) => {
+//                 if (index + 1 === id) {
+//                     if (data.body !== "") {
+//                         postBody.innerHTML = data.body
+//                     }
+//                 }
 
-            })
+//             })
 
-        });
-}
+//         });
+// }
+
+// will play around with this later
